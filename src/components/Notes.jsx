@@ -26,12 +26,11 @@ function Notes() {
 
 
       {/* MAIN CONTENT */}
-      <div className='bg-white flex-1 rounded-s-2xl shadow-inner p-10 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-5 overflow-auto'>
+      <div className='bg-white flex-1 rounded-s-2xl shadow-inner p-10 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-5 '>
         <Cards/>
         <Cards/>
         <Cards/>
         <Cards/>
-
       </div>
       </div>
     </>

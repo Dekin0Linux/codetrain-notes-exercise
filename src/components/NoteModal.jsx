@@ -8,7 +8,7 @@ import {v4} from 'uuid'
 const Textarea = React.forwardRef((props, ref) => <Input {...props} as="textarea" ref={ref} />);
 
 
-const NoteModal = ({open,handleClose,handleOpen,modaltitle}) => {
+const NoteModal = ({open,handleClose,modaltitle}) => {
 
   const [title,setTitle] = useState('')
   const [note,setNote]=useState('');
@@ -47,7 +47,7 @@ const NoteModal = ({open,handleClose,handleOpen,modaltitle}) => {
 
             <Form.Group controlId="title">
               <Form.ControlLabel>Title</Form.ControlLabel>
-              <Form.Control name="title" type='date'  onChange={(value)=>setDate(value)}/>
+              <Form.Control name="title" type='date' onChange={(value)=>setDate(value)}/>
             </Form.Group>
 
             <Form.Group controlId="note">
