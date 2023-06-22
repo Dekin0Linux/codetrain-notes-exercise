@@ -2,15 +2,14 @@
 import { Modal, Button,Form,Input, ButtonToolbar } from 'rsuite';
 import React,{useState} from 'react';
 import 'rsuite/dist/rsuite.min.css';
-import {v4} from 'uuid'
 import { useDispatch } from 'react-redux';
-import { setNote } from '../noteStore/NoteSlice';
+import { setEdit} from '../noteStore/NoteSlice';
 
 //text area display
 const Textarea = React.forwardRef((props, ref) => <Input {...props} as="textarea" ref={ref} />);
 
 
-const NoteModal = ({open,handleClose,modaltitle}) => {
+const EditNoteModal = ({open,handleClose,modaltitle,noteData}) => {
 
   const dispatch = useDispatch() //initialize the dispatch function
 
@@ -20,17 +19,11 @@ const NoteModal = ({open,handleClose,modaltitle}) => {
 
   const handleSubmit=()=>{
 
-    if((title === '') || (note === '') || (date === '')){
-      alert('Complete all Fields')
-      return
-    }else{
-      dispatch(setNote({id:v4(),title,description,date}))
-      console.log({id:v4(),title,description,date})
-      setTitle('')
-      setDate('')
-      setDescription('')
+    
+      dispatch(setEdit({id:noteData.id,title,description,date}))
+
       handleClose()
-    }
+    
   }
   
   return (
@@ -45,17 +38,17 @@ const NoteModal = ({open,handleClose,modaltitle}) => {
 
             <Form.Group controlId="title">
               <Form.ControlLabel>Title</Form.ControlLabel>
-              <Form.Control name="title" onChange={(value)=>setTitle(value)} defaultValue={'hello'}/>
+              <Form.Control name="title" onChange={(value)=>setTitle(value)} defaultValue={noteData.title}/>
             </Form.Group>
 
             <Form.Group controlId="title">
               <Form.ControlLabel>Title</Form.ControlLabel>
-              <Form.Control name="title" type='date' onChange={(value)=>setDate(value)}/>
+              <Form.Control name="title" type='date'  onChange={(value)=>setDate(value)} defaultValue={noteData.date}/>
             </Form.Group>
 
             <Form.Group controlId="note">
               <Form.ControlLabel>Note</Form.ControlLabel>
-              <Form.Control rows={5} name="note" accepter={Textarea} onChange={(value)=>setDescription(value)}/>
+              <Form.Control rows={5} name="note" accepter={Textarea} onChange={(value)=>setDescription(value)} defaultValue={noteData.description}/>
             </Form.Group>
 
 
@@ -73,4 +66,4 @@ const NoteModal = ({open,handleClose,modaltitle}) => {
   );
 };
 
-export default NoteModal
+export default EditNoteModal
