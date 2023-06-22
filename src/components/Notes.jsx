@@ -15,7 +15,6 @@ function Notes() {
   //use the useSelector to get the state
   const allNotes = useSelector((state)=>state.noteReducer.notes)
 
-  console.log(allNotes)
 
 
   return (

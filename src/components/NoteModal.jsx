@@ -25,7 +25,6 @@ const NoteModal = ({open,handleClose,modaltitle}) => {
       return
     }else{
       dispatch(setNote({id:v4(),title,description,date}))
-      console.log({id:v4(),title,description,date})
       setTitle('')
       setDate('')
       setDescription('')
@@ -45,7 +44,7 @@ const NoteModal = ({open,handleClose,modaltitle}) => {
 
             <Form.Group controlId="title">
               <Form.ControlLabel>Title</Form.ControlLabel>
-              <Form.Control name="title" onChange={(value)=>setTitle(value)} defaultValue={'hello'}/>
+              <Form.Control name="title" onChange={(value)=>setTitle(value)}/>
             </Form.Group>
 
             <Form.Group controlId="title">

@@ -13,13 +13,13 @@ const EditNoteModal = ({open,handleClose,modaltitle,noteData}) => {
 
   const dispatch = useDispatch() //initialize the dispatch function
 
-  const [title,setTitle] = useState('')
-  const [description,setDescription]=useState('');
-  const [date,setDate ]= useState('')
+  const [title,setTitle] = useState(noteData.title)
+  const [description,setDescription]= useState(noteData.description);
+  const [date,setDate ]= useState(noteData.date)
 
-  const handleSubmit=()=>{
+  const handleSubmit=(e)=>{
 
-    
+    e.preventDefault()
       dispatch(setEdit({id:noteData.id,title,description,date}))
 
       handleClose()
@@ -43,7 +43,7 @@ const EditNoteModal = ({open,handleClose,modaltitle,noteData}) => {
 
             <Form.Group controlId="title">
               <Form.ControlLabel>Title</Form.ControlLabel>
-              <Form.Control name="title" type='date'  onChange={(value)=>setDate(value)} defaultValue={noteData.date}/>
+              <Form.Control name="title" type='date'  onChange={(value)=>setDate(defaultValue)} defaultValue={noteData.date}/>
             </Form.Group>
 
             <Form.Group controlId="note">
